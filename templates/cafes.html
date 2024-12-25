@@ -1,0 +1,40 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Cafes{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>All Cafes</h1>
+      <table class="table">
+        <thead>
+          <!-- <tr>
+            <th>Cafe Name</th>
+            <th>Location</th>
+            <th>Open Time</th>
+            <th>Close Time</th>
+            <th>Coffee Rating</th>
+            <th>Wi-Fi Rating</th>
+            <th>Power Outlet Rating</th>
+          </tr> -->
+        </thead>
+        <tbody>
+          {% for cafe in cafes %}
+            <tr>
+              {% for cell in cafe %}
+                {% if "http" in cell %}
+                  <td><a href="{{ cell }}" target="_blank">Map</a></td>
+                {% else %}
+                  <td>{{ cell }}</td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <p><a href="/">Return to Home Page</a></p>
+    </div>
+  </div>
+</div>
+{% endblock %}
